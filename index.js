@@ -6,7 +6,14 @@ var port = process.env.PORT || 3000;
 var status = "ok";
 
 var test = new Array();
-test.push({var1:1, var2: new Array("ok", {name:ok, test:yes})})
+test.push({
+  var1:1,
+  var2: new Array(
+    "ok",
+    {name:'ok', test:'yes'}
+  )
+}
+);
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
