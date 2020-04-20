@@ -16,17 +16,35 @@
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
 
-    <div id="joinGame"></div>
-    <div id="lobby"></div>
-    <div id="playCard"></div>
-    <div id="judgeCard"></div>
-    <div id="chosenCard"></div>
-    <div id="scoreBoard"></div>
+    <div id="joinGame">
+      <form action="">
+        <input id="playerName" autocomplete="off" type="text" /><br>
+        <span id="playerNameError" style="visibility:hidden">Please Enter a Name<br></span>
+        <button id="btnJoinGame">Join Game</button>
+      </form>
+    </div>
+
+    <div id="lobby">
+      <div id="playerList"></div>
+      <button id="startgame">Start Game</button>
+    </div>
+
+    <div id="playCard">
+
+    </div>
+
+    <div id="judgeCard">
+
+    </div>
+
+    <div id="chosenCard">
+
+    </div>
+
+    <div id="scoreBoard">
+
+    </div>
 
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
@@ -34,18 +52,29 @@
       var curGameState;
       $(function () {
         var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
-        });
+
+        $('#btnJoinGame').click(function(){
+          if($('#playerName').val() != ""){
+            socket.emit('add player', $('#playerName').val());
+            $('#joinGame').hide();
+            $('#lobby').show();
+          }
+          else{
+            $('#playerNameError').show();
+          }
+        })
 
         socket.on('new player added', function(gameState){
           //update players
+          var allPlayers = "";
+          for(var x = 0; x < gameState.players.length; x++){
+            allPlayers+= gameState.players[x].name;
+          }
+          $('#playerList').val('allPlayers');
         });
 
         socket.on('game start', function(gameState){
-          
+
         });
 
         socket.on('winning card', function(player, card, gameState){
@@ -61,6 +90,18 @@
         });
 
       });
+
+      function resetGame(){
+        curGameState = null;
+        $("#joinGame").show();
+        $("#playerNameError").hide();
+        $("#lobby").hide();
+        $("#playerList").val('');
+        $("#playCard").hide();
+        $("#judgeCard").hide();
+        $("#chosenCard").hide();
+        $("#scoreBoard").hide();
+      }
     </script>
   </body>
 </html>

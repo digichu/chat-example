@@ -98,5 +98,34 @@ function getWhiteCard(){
 }
 
 function populateCards(){
-  ;
+  blackCards.push("Class, pay closeattention. I will now demonstrate the physics of __________.");
+  blackCards.push("Coming to theaters this holiday season, “Star Wars: The Rise of ___________.”");
+  blackCards.push("Never fear, Captain ___________ is here!");
+  blackCards.push("I don’t really know what my mom’s job is, but I think it has something to do with __________.");
+  blackCards.push("What’s about to take this school dance to the next level?");
+  blackCards.push("Shut up, Becky! At least I’m not __________.");
+  blackCards.push("Oh, no thank you, Mrs. Lee. I’ve had plenty of __________ for now.");
+  blackCards.push("MY NAME CHUNGO. CHUNGO LOVE ___________.");
+
+  whiteCards.push("Being dead. ");
+  whiteCards.push("Filling my butt with spaghetti.");
+  whiteCards.push("Idiots.");
+  whiteCards.push("The garbage man.");
+  whiteCards.push("Getting married.");
+  whiteCards.push("Peer pressure.");
+  whiteCards.push("Slowly turning into cheese.");
+  whiteCards.push("Eating a whole roll of toilet paper.");
+  whiteCards.push("Using my butt as a microwave");
+  whiteCards.push("Crab-walking from the toilet to get more toilet paper.");
+  whiteCards.push("Diarrhea.");
+  whiteCards.push("Coffee.");
+  whiteCards.push("Saving up my boogers for ten years and then building the world’s largest booger");
+  whiteCards.push("Mashing a banana into your belly button.");
+  whiteCards.push("Falling in love.");
+  whiteCards.push("Drinking gasoline to see what it tastes like");
+  whiteCards.push("My father, who is a walrus.");
+  whiteCards.push("Not wearing pants.");
+
+
+
 }
