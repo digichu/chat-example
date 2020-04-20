@@ -11,7 +11,7 @@
   <body>
 
     <div id="joinGame">
-      <form action="">
+      <form id="frmJoinGame" action="">
         <input id="playerName" autocomplete="off" type="text" /><br>
         <span id="playerNameError" style="visibility:hidden">Please Enter a Name<br></span>
         <button id="btnJoinGame">Join Game</button>
@@ -47,7 +47,7 @@
         var socket = io();
         resetGame();
 
-        $('#btnJoinGame').click(function(){
+        $('#frmJoinGame').submit(function(event){
           if($('#playerName').val() != ""){
             socket.emit('add player', $('#playerName').val());
             $('#joinGame').hide();
@@ -56,6 +56,7 @@
           else{
             $('#playerNameError').show();
           }
+          event.preventDefault();
         })
 
         socket.on('new player added', function(gameState){
