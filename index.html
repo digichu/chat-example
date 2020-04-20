@@ -4,6 +4,7 @@
     <title>Socket.IO chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
+      div{width:100%; padding:10px};
       body { font: 13px Helvetica, Arial; }
       form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
@@ -19,9 +20,18 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+
+    <div id="joinGame"></div>
+    <div id="lobby"></div>
+    <div id="playCard"></div>
+    <div id="judgeCard"></div>
+    <div id="chosenCard"></div>
+    <div id="scoreBoard"></div>
+
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+      var curGameState;
       $(function () {
         var socket = io();
         $('form').submit(function(){
@@ -29,15 +39,27 @@
           $('#m').val('');
           return false;
         });
-        socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
+
+        socket.on('new player added', function(gameState){
+          //update players
         });
+
+        socket.on('game start', function(gameState){
+          
+        });
+
+        socket.on('winning card', function(player, card, gameState){
+
+        });
+
+        socket.on('all cards played', function(gameState){
+
+        });
+
         socket.on('something', function(msg){
-          var x = msg;
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
+
         });
+
       });
     </script>
   </body>
