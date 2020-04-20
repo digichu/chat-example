@@ -39,7 +39,7 @@ http.listen(port, function(){
   console.log('listening on *:' + port);
 });
 
-function startGame(){
+function setup(){
   gameState = new Object();
   gameState.players = new Array();
   gameState.playedCards = new Array();
@@ -48,7 +48,9 @@ function startGame(){
   blackCards = new Array();
   whiteCards = new Array();
   populateCards();
+}
 
+function startGame(){
   io.emit("game start", gameState)
 }
 

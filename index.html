@@ -61,11 +61,12 @@
 
         socket.on('new player added', function(gameState){
           //update players
+          curGameState = gameState;
           var allPlayers = "";
           for(var x = 0; x < gameState.players.length; x++){
             allPlayers+= gameState.players[x].name;
           }
-          $('#playerList').val('allPlayers');
+          $('#playerList').val(allPlayers);
         });
 
         socket.on('game start', function(gameState){
