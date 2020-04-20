@@ -39,6 +39,8 @@ http.listen(port, function(){
   console.log('listening on *:' + port);
 });
 
+setup();
+
 function setup(){
   gameState = new Object();
   gameState.players = new Array();
